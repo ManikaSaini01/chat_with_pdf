@@ -1,11 +1,14 @@
 import streamlit as st
 from dotenv import load_dotenv
+import os
 
 from src.pdf_loader import load_pdf_text
 from src.vector_store import create_vector_store
 from src.rag_chain import create_rag_chain
 
 load_dotenv()
+
+os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
 st.set_page_config(page_title="Chat with PDF", layout="wide")
 st.title("📄 Chat with PDF using OpenAI")
